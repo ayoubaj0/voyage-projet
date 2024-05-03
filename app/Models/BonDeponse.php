@@ -14,12 +14,13 @@ class BonDeponse extends Model
     {
         return $this->belongsTo(TypePaiement::class);
     }
-    // public function factureClients()
-    // {
-    //     return $this->belongsToMany(FactureClient::class, 'facture_client_bon_recette', 'bon_recette_id', 'facture_client_id');
-    // }
+
     public function prestationFournisseur()
     {
         return $this->belongsToMany(PrestationFournisseur::class, 'bon_deponse_prestation_fournisseur', 'bon_deponse_id', 'prestation_fournisseur_id');
+    }
+    public function factureFournisseurs()
+    {
+        return $this->belongsToMany(FactureFournisseur::class, 'facture_fournisseur_bon_deponse', 'bon_deponse_id', 'facture_Fournisseur_id');
     }
 }
